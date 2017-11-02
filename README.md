@@ -19,4 +19,4 @@ This extension for Contao Open Source CMS allows you to create a article navigat
 
 ## Acknowledgement
 
-This extension is inspired and based on [onepage-navigation](https://github.com/Sascha-Brandhoff/onepage-navigation) by Sascha Brandhoff.
+This extension is inspired and based on [onepage-navigation](https://github.com/Sascha-Brandhoff/onepage-navigation) by Sascha Brandhoff. It's been adapted and rewritten for Contao 4.x as a symfony bundle.
