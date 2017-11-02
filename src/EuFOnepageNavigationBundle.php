@@ -2,8 +2,9 @@
 
 /**
  * @package     Onepage Navigation
+ * @author      Sascha Brandhoff (https://github.com/Sascha-Brandhoff/onepage-navigation)
  * @author      Basti Buck (http://www.bastibuck.de)
- * @license     LGPL
+ * @license     LGPLv3
  * @copyright   Erdmann & Freunde (https://erdmann-freunde.de)
  */
 
