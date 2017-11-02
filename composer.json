@@ -1,35 +1,36 @@
 {
-    "name":"sascha-brandhoff/onepage-navigation",
-    "description":"Diese Contao-Erweiterung erlaubt es eine Artikelnavigation zu erstellen. Diese kann wie ein normales Navigationsmenü eingeblendet werden und steuert im Frontend via jQuery die entsprechenden Artikel mit einem Smooth-Scroll an.",
-    "keywords":["contao","onepage", "navigation", "onepage navigation", "artikel"],
+    "name":"erdmannfreunde/onepage-navigation",
+    "description":"This extension for Contao CMS adds a new type of navigation to create onepage navigations that are scrolled automatically.",
+    "keywords":["contao","onepage", "navigation", "onepage navigation", "article"],
     "type":"contao-module",
-    "homepage":"http://contao.kitchen/",
+    "homepage":"https://github.com/ErdmannFreunde/contao-onepage-navigation",
     "license":"LGPLv3",
     "authors":[
-	{
-	    "name":"Sascha Brandhoff",
-	    "email":"sascha.brandhoff@gmail.com",
-	    "homepage":"https://www.paypal.me/pixelSpreadde",
-	    "role":"Developer"
-	}
+		{
+			"name":"Sascha Brandhoff",
+			"role":"Developer"
+		},
+		{
+			"name":"Erdmann & Freunde // Sebastian Buck",
+			"homepage":"http://erdmann-freunde.de",
+			"role":"Developer"
+		}
     ],
     "support":{
-	"email":"sascha.brandhoff@gmail.com",
-	"issues":"https://github.com/Sascha-Brandhoff/onepage-navigation/issues",
-	"source":"https://github.com/Sascha-Brandhoff/onepage-navigation"
+		"email":"moin@erdmann-freunde.de",
+		"issues":"https://github.com/ErdmannFreunde/contao-onepage-navigation/issues",
+		"source":"https://github.com/ErdmannFreunde/contao-onepage-navigation"
     },
     "require":{
-	"php":">=5.3",
-	"contao/core": ">=3.4,<3.6"
+		"php":">=7.0",
+		"contao/core": "~4.1"
     },
     "replace":{
-	"sascha-brandhoff/onepage-navigation":"self.version"
+		"sascha-brandhoff/onepage-navigation":"self.version"
     },
     "extra":{
-	"contao":{
-	    "sources":{
-		"":"system/modules/onepage-navigation"
-	    }
-	}
+		"contao":{
+			
+		}
     }
 }
