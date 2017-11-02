@@ -5,7 +5,11 @@
     <?php if($this->hasItems): ?>
         <ul>
             <?php foreach ($this->navigation as $nav): ?>
-                <li<?php if($nav->css): ?> class="<?= $nav->css;?>"<?php endif; ?>><a href="<?= $nav->onepage_jump; ?>" title="<?= $nav->title ?>"><?= $nav->title ?></a></li>
+                <li<?php if($nav->css): ?> class="<?= $nav->css;?>"<?php endif; ?>>
+                    <a href="<?= $nav->onepage_jump; ?>" data-onepagelink="<?= $nav->articleID ?>" title="<?= $nav->title ?>">
+                        <?= $nav->title ?>
+                    </a>
+                </li>
             <?php endforeach; ?>
         </ul>
     <?php endif; ?>

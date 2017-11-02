@@ -80,6 +80,7 @@ class ModuleOnepageNavigation extends \Module
 				}
 				
 				$objArticle->cssID = serialize($cssID);
+				$objArticle->articleID = $cssID[0];
 				$objArticle->onepage_jump = \Environment::get('requestUri').'#'.$cssID[0];
 
 				$arrNavigation[] = (object) $objArticle->row();
