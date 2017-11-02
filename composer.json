@@ -2,7 +2,7 @@
 	"name":"erdmannfreunde/onepage-navigation",
 	"description":"This extension for Contao CMS adds a new type of navigation to create onepage navigations that are scrolled automatically.",
 	"keywords":["contao","onepage", "navigation", "onepage navigation", "article"],
-	"type":"contao-module",
+	"type":"contao-bundle",
 	"homepage":"https://github.com/ErdmannFreunde/contao-onepage-navigation",
 	"license":"LGPLv3",
 	"authors":[
