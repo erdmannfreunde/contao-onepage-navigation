@@ -3,7 +3,7 @@
 <?php $this->block('content'); ?>
 
     <?php if($this->hasItems): ?>
-        <ul>
+        <ul class="onepage_navigation__list">
             <?php foreach ($this->navigation as $nav): ?>
                 <li<?php if($nav->css): ?> class="<?= $nav->css;?>"<?php endif; ?>>
                     <a href="<?= $nav->onepage_jump; ?>" data-onepagelink="<?= $nav->articleID ?>" title="<?= $nav->title ?>">
