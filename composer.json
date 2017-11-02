@@ -1,0 +1,35 @@
+{
+    "name":"sascha-brandhoff/onepage-navigation",
+    "description":"Diese Contao-Erweiterung erlaubt es eine Artikelnavigation zu erstellen. Diese kann wie ein normales Navigationsmenü eingeblendet werden und steuert im Frontend via jQuery die entsprechenden Artikel mit einem Smooth-Scroll an.",
+    "keywords":["contao","onepage", "navigation", "onepage navigation", "artikel"],
+    "type":"contao-module",
+    "homepage":"http://contao.kitchen/",
+    "license":"LGPLv3",
+    "authors":[
+	{
+	    "name":"Sascha Brandhoff",
+	    "email":"sascha.brandhoff@gmail.com",
+	    "homepage":"https://www.paypal.me/pixelSpreadde",
+	    "role":"Developer"
+	}
+    ],
+    "support":{
+	"email":"sascha.brandhoff@gmail.com",
+	"issues":"https://github.com/Sascha-Brandhoff/onepage-navigation/issues",
+	"source":"https://github.com/Sascha-Brandhoff/onepage-navigation"
+    },
+    "require":{
+	"php":">=5.3",
+	"contao/core": ">=3.4,<3.6"
+    },
+    "replace":{
+	"sascha-brandhoff/onepage-navigation":"self.version"
+    },
+    "extra":{
+	"contao":{
+	    "sources":{
+		"":"system/modules/onepage-navigation"
+	    }
+	}
+    }
+}

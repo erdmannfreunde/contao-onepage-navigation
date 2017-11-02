@@ -1,0 +1,13 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+    <?php if($this->hasItems): ?>
+        <ul>
+            <?php foreach ($this->navigation as $nav): ?>
+                <li<?php if($nav->css): ?> class="<?= $nav->css;?>"<?php endif; ?>><a href="#<?= $nav->onepage_jump; ?>" data-scroll="<?= $nav->onepage_jump; ?>" title="<?= $nav->title ?>"><?= $nav->title ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+
+<?php $this->endblock(); ?>
