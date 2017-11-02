@@ -78,7 +78,7 @@ class ModuleOnepageNavigation extends \Module
 						$cssID = array('article-'.$objArticle->id, $cssID[1]);
 					}
 				}
-				
+				$cssID[1] .= 'onepage_article';
 				$objArticle->cssID = serialize($cssID);
 				$objArticle->articleID = $cssID[0];
 				$objArticle->onepage_jump = \Environment::get('requestUri').'#'.$cssID[0];

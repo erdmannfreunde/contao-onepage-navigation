@@ -39,29 +39,27 @@
         // add active class to active article
         $(window).scroll(function() {    
             var scroll = $(window).scrollTop();
-            var active = 0;
+            var active = false;
 
-            $('div.mod_article').each(function(i, element) {
+            $('div.mod_article.onepage_article').each(function(i, element) {
                 var articleID = $(element).attr('id');
 
                 // remove active from all elements
                 $('.onepage_navigation__list').find("[data-onepagelink='" + articleID + "']").parent().removeClass('active');
 
-                if(active === 0) {
-                    // add active to top most article and deactivate for other articles
-                    if (scroll > $(element).offset().top || i == 0) {
-                        $('.onepage_navigation__list').find("[data-onepagelink='" + articleID + "']").parent().removeClass('active');
-                    } 
-                    else {
+                if(!active) {
+                    
+                    // check if top of element is bigger than scroll
+                    if (scroll < $(element).offset().top) {
+
+                        // add class active
                         $('.onepage_navigation__list').find("[data-onepagelink='" + articleID + "']").parent().addClass('active');
-                        active = 1;
+                        
+                        // ignore rest
+                        active = true;
                     }
                 }
-
-
             });
-
-            
         });
         
     });
