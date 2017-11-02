@@ -1,11 +1,11 @@
 {
-    "name":"erdmannfreunde/onepage-navigation",
-    "description":"This extension for Contao CMS adds a new type of navigation to create onepage navigations that are scrolled automatically.",
-    "keywords":["contao","onepage", "navigation", "onepage navigation", "article"],
-    "type":"contao-module",
-    "homepage":"https://github.com/ErdmannFreunde/contao-onepage-navigation",
-    "license":"LGPLv3",
-    "authors":[
+	"name":"erdmannfreunde/onepage-navigation",
+	"description":"This extension for Contao CMS adds a new type of navigation to create onepage navigations that are scrolled automatically.",
+	"keywords":["contao","onepage", "navigation", "onepage navigation", "article"],
+	"type":"contao-module",
+	"homepage":"https://github.com/ErdmannFreunde/contao-onepage-navigation",
+	"license":"LGPLv3",
+	"authors":[
 		{
 			"name":"Sascha Brandhoff",
 			"role":"Developer"
@@ -15,22 +15,27 @@
 			"homepage":"http://erdmann-freunde.de",
 			"role":"Developer"
 		}
-    ],
-    "support":{
+	],
+	"support":{
 		"email":"moin@erdmann-freunde.de",
 		"issues":"https://github.com/ErdmannFreunde/contao-onepage-navigation/issues",
 		"source":"https://github.com/ErdmannFreunde/contao-onepage-navigation"
-    },
-    "require":{
-		"php":">=7.0",
-		"contao/core": "~4.1"
-    },
-    "replace":{
+	},
+	"require":{
+		"contao/core": "~4.4"
+	},
+	"require-dev": {
+		 "contao/manager-plugin": "^2.0"
+	},
+	"replace":{
 		"sascha-brandhoff/onepage-navigation":"self.version"
-    },
-    "extra":{
-		"contao":{
-			
+	},
+	"autoload": {
+		"psr-4": {
+			"EuF\\OnepageNavigation\\": "src/"
 		}
-    }
+	},
+	"extra": {
+		"contao-manager-plugin": "EuF\\OnepageNavigation\\ContaoManager\\ContaoManagerPlugin"
+	}
 }
