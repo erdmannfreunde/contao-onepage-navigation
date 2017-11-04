@@ -37,20 +37,22 @@
         });
 
         // add active class to active article
+        var offset = parseInt($(window).height() / 4);
+
         $(window).scroll(function() {    
             var scroll = $(window).scrollTop();
             var active = false;
 
             $('div.mod_article.onepage_article').each(function(i, element) {
                 var articleID = $(element).attr('id');
-
+                
                 // remove active from all elements
                 $('.onepage_navigation__list').find("[data-onepagelink='" + articleID + "']").parent().removeClass('active');
 
                 if(!active) {
                     
-                    // check if top of element is bigger than scroll
-                    if (scroll < $(element).offset().top + $(element).outerHeight()) {
+                    // check if top of element is bigger than scroll + offset
+                    if (scroll < $(element).offset().top + offset) {
 
                         // add class active
                         $('.onepage_navigation__list').find("[data-onepagelink='" + articleID + "']").parent().addClass('active');
