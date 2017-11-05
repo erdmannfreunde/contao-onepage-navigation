@@ -27,7 +27,7 @@ class OnepageHooks extends Controller
 				$arrExplode[1] = substr($arrExplode[1], 1);
 			}
 
-			$value = '<a href="#' . $arrExplode[1] . '" data-scroll="' . $arrExplode[1] . '" title="' . $arrExplode[2] . '">' . $arrExplode[2] . '</a>';
+			$value = '<a href="'.\Environment::get("requestUri").'#' . $arrExplode[1] . '" data-scroll="' . $arrExplode[1] . '" title="' . $arrExplode[2] . '">' . $arrExplode[2] . '</a>';
 		}
 
 		return $value;

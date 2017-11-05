@@ -1,0 +1,68 @@
+
+<script>
+    $(document).ready(function() {
+        var scrollSpeed = 800;
+        
+        $('a[href*="#"]').not('[href="#"]').not('[href="#0"]')
+        .click(function(event) {
+            // check if On-page links
+            if (
+                location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+                &&
+                location.hostname == this.hostname
+            ) {
+                    // Figure out element to scroll to
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    // Does a scroll target exist?
+                    if (target.length) {
+                        // Only prevent default if animation is actually gonna happen
+                        event.preventDefault();
+                        $('html, body').animate({
+                            scrollTop: target.offset().top
+                    }, scrollSpeed, function() {
+                        // Callback after animation
+                        // Must change focus!
+                        var $target = $(target);
+                        $target.focus();
+                        if ($target.is(":focus")) { // Checking if the target was focused
+                            return false;
+                        } else {
+                            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+                            $target.focus(); // Set focus again
+                        };
+                    });
+                }
+            }
+        });
+
+        // add active class to active article
+        var offset = parseInt($(window).height() / 4);
+
+        $(window).scroll(function() {    
+            var scroll = $(window).scrollTop();
+            var active = false;
+
+            $('div.mod_article.onepage_article').each(function(i, element) {
+                var articleID = $(element).attr('id');
+                
+                // remove active from all elements
+                $('.onepage_navigation__list').find("[data-onepagelink='" + articleID + "']").parent().removeClass('active');
+
+                if(!active) {
+                    
+                    // check if scroll + offset is smaller than bottom of element
+                    if (scroll + offset < $(element).offset().top + $(element).outerHeight()) {
+
+                        // add class active
+                        $('.onepage_navigation__list').find("[data-onepagelink='" + articleID + "']").parent().addClass('active');
+                        
+                        // ignore rest
+                        active = true;
+                    }
+                }
+            });
+        });
+        
+    });
+</script>
