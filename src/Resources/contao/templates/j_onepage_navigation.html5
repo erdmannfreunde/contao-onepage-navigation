@@ -51,8 +51,8 @@
 
                 if(!active) {
                     
-                    // check if top of element is bigger than scroll + offset
-                    if (scroll < $(element).offset().top + offset) {
+                    // check if scroll + offset is smaller than bottom of element
+                    if (scroll + offset < $(element).offset().top + $(element).outerHeight()) {
 
                         // add class active
                         $('.onepage_navigation__list').find("[data-onepagelink='" + articleID + "']").parent().addClass('active');
