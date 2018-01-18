@@ -62,7 +62,7 @@ class ModuleOnepageNavigation extends \Module
 		}
 		
 		// get articles by page id
-		$objArticle = \ArticleModel::findByPid($intPageID);
+		$objArticle = \ArticleModel::findByPid($intPageID, array('order' => 'sorting'));
 		
 		// put articles into array if they should be displayed as navigation items
 		while($objArticle->next())
