@@ -51,10 +51,18 @@ class ModuleOnepageNavigation extends \Module
 	protected function compile()
 	{
         // initialize empty array
-        $arrNavigation = array();
+		$arrNavigation = array();
+		
+		// get current page id
+		$intPageID = $GLOBALS['objPage']->id;
+
+		// override page ID if a rootPage is defined
+		if($this->defineRoot) {
+			$intPageID = $this->rootPage;
+		}
         
         // get articles by page id
-        $objArticle = \ArticleModel::findByPid($GLOBALS['objPage']->id);
+        $objArticle = \ArticleModel::findByPid($intPageID);
         
         // put articles into array if they should be displayed as navigation items
 		while($objArticle->next())
