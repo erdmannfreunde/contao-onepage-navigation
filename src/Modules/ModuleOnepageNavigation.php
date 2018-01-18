@@ -60,11 +60,11 @@ class ModuleOnepageNavigation extends \Module
 		if($this->defineRoot) {
 			$intPageID = $this->rootPage;
 		}
-        
-        // get articles by page id
-        $objArticle = \ArticleModel::findByPid($intPageID);
-        
-        // put articles into array if they should be displayed as navigation items
+		
+		// get articles by page id
+		$objArticle = \ArticleModel::findByPid($intPageID);
+		
+		// put articles into array if they should be displayed as navigation items
 		while($objArticle->next())
 		{
 			if($objArticle->addNavigation && $objArticle->published)
