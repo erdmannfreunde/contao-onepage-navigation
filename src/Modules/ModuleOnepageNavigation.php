@@ -97,7 +97,7 @@ class ModuleOnepageNavigation extends \Module
 
 		if($arrNavigation) {
 			// add first and last class to items
-			$arrNavigation[0]->css = 'first active';
+			$arrNavigation[0]->css = 'first';
 			$arrNavigation[count($arrNavigation) - 1]->css = 'last';
 	
 			// send to template
