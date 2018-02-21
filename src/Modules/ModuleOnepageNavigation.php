@@ -51,12 +51,20 @@ class ModuleOnepageNavigation extends \Module
 	protected function compile()
 	{
         // initialize empty array
-        $arrNavigation = array();
-        
-        // get articles by page id
-        $objArticle = \ArticleModel::findByPid($GLOBALS['objPage']->id);
-        
-        // put articles into array if they should be displayed as navigation items
+		$arrNavigation = array();
+		
+		// get current page id
+		$intPageID = $GLOBALS['objPage']->id;
+
+		// override page ID if a rootPage is defined
+		if($this->defineRoot) {
+			$intPageID = $this->rootPage;
+		}
+		
+		// get articles by page id
+		$objArticle = \ArticleModel::findByPid($intPageID, array('order' => 'sorting'));
+		
+		// put articles into array if they should be displayed as navigation items
 		while($objArticle->next())
 		{
 			if($objArticle->addNavigation && $objArticle->published)
@@ -89,7 +97,7 @@ class ModuleOnepageNavigation extends \Module
 
 		if($arrNavigation) {
 			// add first and last class to items
-			$arrNavigation[0]->css = 'first active';
+			$arrNavigation[0]->css = 'first';
 			$arrNavigation[count($arrNavigation) - 1]->css = 'last';
 	
 			// send to template

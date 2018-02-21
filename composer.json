@@ -4,7 +4,7 @@
 	"keywords":["contao","onepage", "navigation", "onepage navigation", "article"],
 	"type":"contao-bundle",
 	"homepage":"https://github.com/ErdmannFreunde/contao-onepage-navigation",
-	"license":"LGPLv3",
+	"license":"LGPL-3.0-or-later",
 	"authors":[
 		{
 			"name":"Sascha Brandhoff",
