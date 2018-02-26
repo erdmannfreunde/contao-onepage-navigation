@@ -59,6 +59,8 @@ class ModuleOnepageNavigation extends \Module
 		// override page ID if a rootPage is defined
 		if($this->defineRoot) {
 			$intPageID = $this->rootPage;
+			$rootPageId = \PageModel::findById($this->rootPage);
+			$rootPageAlias = $rootPageId->getFrontendUrl('');
 		}
 		
 		// get articles by page id
@@ -89,7 +91,7 @@ class ModuleOnepageNavigation extends \Module
 				$cssID[1] .= ' onepage_article'; 
 				$objArticle->cssID = serialize($cssID);
 				$objArticle->articleID = $cssID[0];
-				$objArticle->onepage_jump = \Environment::get('requestUri').'#'.$cssID[0];
+				$objArticle->onepage_jump = $rootPageAlias.'#'.$cssID[0];
 
 				$arrNavigation[] = (object) $objArticle->row();
 			}
