@@ -2,7 +2,8 @@
 <script>
 $(document).ready(function() {
 	var el = $('a[href*="#"]').not('[href="#"]').not('[href="#0"]');
-  var scrollSpeed = 800;
+  	var scrollSpeed = 800;
+	var uri = window.location.href.split("#")[0];
   
   el.click(function(event) {
       // check if On-page links
@@ -47,7 +48,7 @@ $(document).ready(function() {
 		    	
 			    	// change url to active link
 			    	if (typeof(window.history.pushState) == 'function') {
-							history.pushState("", "", '#' + this.element.id);
+							history.pushState("", "", uri + '#' + this.element.id);
 						}
 					}
 		  	}
@@ -63,10 +64,10 @@ $(document).ready(function() {
 		    	if($(this.element).hasClass('onepage_article')) {
 			    	// change url to active link
 			    	navActive(this.element.id);
-						history.pushState("", "", '#' + this.element.id);
+						history.pushState("", "", uri +  '#' + this.element.id);
 		    	} else {
 			    	navActive(previousWaypoint.element.id);
-				  	history.pushState("", "", '#' + previousWaypoint.element.id);				  	
+				  	history.pushState("", "", uri +  '#' + previousWaypoint.element.id);				  	
 			  	}
 		  	} 
 		  	
