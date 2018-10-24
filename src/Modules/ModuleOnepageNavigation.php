@@ -60,6 +60,7 @@ class ModuleOnepageNavigation extends \Module
 		if($this->defineRoot) {
 			$PageID = \PageModel::findById($this->rootPage);
 			$PageAlias = $PageID->getFrontendUrl('');
+			$intPageID = $PageID->id;
 		
 		} else {
 			$PageID    = \PageModel::findById($intPageID);
