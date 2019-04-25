@@ -48,7 +48,7 @@ $(document).ready(function() {
 		    	
 			    	// change url to active link
 			    	if (typeof(window.history.pushState) == 'function') {
-							history.pushState("", "", uri + '#' + this.element.id);
+							history.pushState("", "", uri + location.pathname + '#' + this.element.id);
 						}
 					}
 		  	}
@@ -64,10 +64,10 @@ $(document).ready(function() {
 		    	if($(this.element).hasClass('onepage_article')) {
 			    	// change url to active link
 			    	navActive(this.element.id);
-						history.pushState("", "", uri +  '#' + this.element.id);
+						history.pushState("", "", uri + location.pathname + '#' + this.element.id);
 		    	} else {
 			    	navActive(previousWaypoint.element.id);
-				  	history.pushState("", "", uri +  '#' + previousWaypoint.element.id);				  	
+				  	history.pushState("", "", uri + location.pathname +  '#' + previousWaypoint.element.id);				  	
 			  	}
 		  	} 
 		  	
