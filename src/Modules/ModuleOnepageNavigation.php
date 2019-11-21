@@ -85,7 +85,7 @@ class ModuleOnepageNavigation extends \Module
 
 				if (empty($cssID[0]))
 				{
-					if($objArticle->navigation_jumpTo) {						
+					if($objArticle->navigation_jumpTo) {
 						$cssID = array($objArticle->navigation_jumpTo, $cssID[1]);
 					}
 					else {
@@ -94,7 +94,6 @@ class ModuleOnepageNavigation extends \Module
 				}
 				$cssID[1] .= ' onepage_article'; 
 				$objArticle->cssID = serialize($cssID);
-				$objArticle->articleID = $cssID[0];
 				$objArticle->onepage_jump = $PageAlias.'#'.$cssID[0];
 
 				$arrNavigation[] = (object) $objArticle->row();

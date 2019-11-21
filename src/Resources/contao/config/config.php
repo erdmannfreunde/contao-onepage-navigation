@@ -22,3 +22,4 @@ array_insert($GLOBALS['FE_MOD']['navigationMenu'], count($GLOBALS['FE_MOD']['nav
  * Hooks
  */
 $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('EuF\OnepageNavigation\Hooks\OnepageHooks', 'replaceScrollTag');
+$GLOBALS['TL_HOOKS']['getArticle'][] = array('EuF\OnepageNavigation\Hooks\OnepageHooks', 'onGetArticle');
