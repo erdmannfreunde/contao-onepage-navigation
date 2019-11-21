@@ -92,7 +92,6 @@ class ModuleOnepageNavigation extends \Module
 						$cssID = array('article-'.$objArticle->id, $cssID[1]);
 					}
 				}
-				$cssID[1] .= ' onepage_article'; 
 				$objArticle->cssID = serialize($cssID);
 				$objArticle->onepage_jump = $PageAlias.'#'.$cssID[0];
 
