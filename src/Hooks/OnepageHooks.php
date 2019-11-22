@@ -12,9 +12,21 @@
 namespace EuF\OnepageNavigation\Hooks;
 
 use Contao\Controller;
+use Contao\StringUtil;
 
 class OnepageHooks extends Controller
 {
+
+    public function onGetArticle($row): void
+    {
+        if ($anchor = $row->navigation_jumpTo) {
+            $cssId      = StringUtil::deserialize($row->cssID, true);
+            $cssId[0]   = $anchor;
+            $cssId[1]  .= ' onepage_article';
+            $row->cssID = serialize($cssId);
+        }
+    }
+
 	public function replaceScrollTag($strTag)
 	{
         $value = false;
