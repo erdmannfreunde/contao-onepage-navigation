@@ -2,9 +2,9 @@
 <script>
 $(document).ready(function() {
   var el = $('a[href*="#"]').not('[href="#"]').not('[href="#0"]');
-    var scrollSpeed = 800;
+  var scrollSpeed = 800;
   var uri = window.location.href.split("#")[0];
-  
+
   el.click(function(event) {
       // check if On-page links
       if (
@@ -30,7 +30,7 @@ $(document).ready(function() {
         // set nav active when scrolling
   var navActive = function(section) {
     var $el = $('.onepage_navigation__list');
-    
+
     $el.find('li.active').removeClass('active');
     $el.each(function(){
       $(this).find('a[data-onepagelink="'+section+'"]').parent().addClass('active');
@@ -39,9 +39,9 @@ $(document).ready(function() {
 
   var navigationSection = function() {
   var $section = $('.mod_article');
-    
+
     $section.waypoint(function(direction) {
-        
+
         if (direction === 'down') {
           if($(this.element).hasClass('onepage_article')) {
             // change url to active link
@@ -53,16 +53,16 @@ $(document).ready(function() {
     });
 
     $section.waypoint(function(direction) {
-      
+
         if (direction === 'up') {
           var previousWaypoint = this.previous();
-          
+
           if($(this.element).hasClass('onepage_article')) {
             // change url to active link
             navActive(this.element.id);
           }
-        } 
-        
+        }
+
     }, {
         offset: function() {
           return (this.context.innerHeight()/2) - this.element.offsetHeight; // offset 50% from bottom
@@ -70,10 +70,10 @@ $(document).ready(function() {
         group: $section
     });
   };
-  
+
   $(function(){
     navigationSection();
-  }); 
-        
+  });
+
 });
 </script>
