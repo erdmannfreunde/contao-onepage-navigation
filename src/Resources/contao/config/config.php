@@ -1,25 +1,25 @@
-<?php 
+<?php
 
-/**
- * @package     Onepage Navigation
- * @author      Sascha Brandhoff (https://github.com/Sascha-Brandhoff/onepage-navigation)
- * @author      Basti Buck (http://www.bastibuck.de)
- * @license     LGPLv3
- * @copyright   Erdmann & Freunde (https://erdmann-freunde.de)
+declare(strict_types=1);
+
+/*
+ * Contao Onepage Navigation for Contao Open Source CMS.
+ *
+ * @copyright  Copyright (c) 2021, Erdmann & Freunde
+ * @author     Erdmann & Freunde <https://erdmann-freunde.de>
+ * @license    MIT
+ * @link       http://github.com/erdmannfreunde/contao-onepage-navigation
  */
 
-
-
-/**
+/*
  * Frontend-Modules
  **/
-array_insert($GLOBALS['FE_MOD']['navigationMenu'], count($GLOBALS['FE_MOD']['navigationMenu']), array
-(
-	'onepage_navigation'     => 'EuF\OnepageNavigation\Modules\ModuleOnepageNavigation'
-));
+array_insert($GLOBALS['FE_MOD']['navigationMenu'], \count($GLOBALS['FE_MOD']['navigationMenu']), [
+    'onepage_navigation'     => 'EuF\OnepageNavigation\Modules\ModuleOnepageNavigation',
+]);
 
-/**
+/*
  * Hooks
  */
-$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('EuF\OnepageNavigation\Hooks\OnepageHooks', 'replaceScrollTag');
-$GLOBALS['TL_HOOKS']['getArticle'][] = array('EuF\OnepageNavigation\Hooks\OnepageHooks', 'onGetArticle');
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = ['EuF\OnepageNavigation\Hooks\OnepageHooks', 'replaceScrollTag'];
+$GLOBALS['TL_HOOKS']['getArticle'][]        = ['EuF\OnepageNavigation\Hooks\OnepageHooks', 'onGetArticle'];

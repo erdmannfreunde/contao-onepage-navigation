@@ -99,6 +99,7 @@ class ModuleOnepageNavigation extends \Module
                         else
                         {
                             $cssID = ['article-'.$objArticle->id, $cssID[1]];
+                            $objArticle->navigation_jumpTo = 'article-'.$objArticle->id;
                         }
                     }
                     $objArticle->cssID        = serialize($cssID);

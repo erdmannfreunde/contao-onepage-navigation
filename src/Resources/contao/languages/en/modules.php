@@ -1,15 +1,17 @@
-<?php 
+<?php
 
-/**
- * @package     Onepage Navigation
- * @author      Sascha Brandhoff (https://github.com/Sascha-Brandhoff/onepage-navigation)
- * @author      Basti Buck (http://www.bastibuck.de)
- * @license     LGPLv3
- * @copyright   Erdmann & Freunde (https://erdmann-freunde.de)
+declare(strict_types=1);
+
+/*
+ * Contao Onepage Navigation for Contao Open Source CMS.
+ *
+ * @copyright  Copyright (c) 2021, Erdmann & Freunde
+ * @author     Erdmann & Freunde <https://erdmann-freunde.de>
+ * @license    MIT
+ * @link       http://github.com/erdmannfreunde/contao-onepage-navigation
  */
 
- 
-/**
+/*
  * Frontend Modules
  */
-$GLOBALS['TL_LANG']['FMD']['onepage_navigation'] = array('Article navigation (Onepage)', 'Creates a onepage navigation from the articles on the active page.');
+$GLOBALS['TL_LANG']['FMD']['onepage_navigation'] = ['Article navigation (Onepage)', 'Creates a onepage navigation from the articles on the active page.'];
