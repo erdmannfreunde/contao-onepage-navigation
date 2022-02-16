@@ -56,5 +56,42 @@ $GLOBALS['TL_DCA']['tl_article']['fields']['navigation_jumpTo'] = [
         'tl_class'          => 'w50',
         'rgxp'              => 'alias',
     ],
+    'save_callback' => array(array('OnepageArticle', 'generateAlias')),
     'sql'                     => "varchar(255) NOT NULL default ''",
 ];
+
+class OnepageArticle extends Backend {
+    /**
+     * Auto-generate the navigation_jumpTo if it has not been set yet
+     *
+     * @param mixed         $varValue
+     * @param DataContainer $dc
+     *
+     * @return string
+     *
+     * @throws Exception
+     */
+    public function generateAlias($varValue, DataContainer $dc)
+    {
+        $aliasExists = function (string $navigation_jumpTo) use ($dc): bool
+        {
+            return $this->Database->prepare("SELECT id FROM tl_article WHERE navigation_jumpTo=? AND id!=?")->execute($navigation_jumpTo, $dc->id)->numRows > 0;
+        };
+
+        // Generate alias if there is none
+        if (!$varValue)
+        {
+            $varValue = System::getContainer()->get('contao.slug')->generate($dc->activeRecord->navigation_title, ArticleModel::findByPk($dc->activeRecord->pid)->jumpTo, $aliasExists);
+        }
+        elseif (preg_match('/^[1-9]\d*$/', $varValue))
+        {
+            throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasNumeric'], $varValue));
+        }
+        elseif ($aliasExists($varValue))
+        {
+            throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasExists'], $varValue));
+        }
+
+        return $varValue;
+    }
+}
