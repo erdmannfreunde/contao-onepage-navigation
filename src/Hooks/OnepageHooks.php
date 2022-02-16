@@ -23,14 +23,12 @@ class OnepageHooks extends Controller
         if ($row->addNavigation)
         {
             $cssId      = StringUtil::deserialize($row->cssID, true);
+            if ($anchor = $row->navigation_jumpTo)
+            {
+                $cssId[0] = $anchor;
+            }
             $cssId[1] .= ' onepage_article';
             $row->cssID = serialize($cssId);
-            $anchor     = $row->navigation_jumpTo;
-        }
-
-        if ($row->navigation_jumpTo)
-        {
-            $cssId[0] = $row->navigation_jumpTo;
         }
     }
 
