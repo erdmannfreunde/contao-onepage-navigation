@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace EuF\OnepageNavigation\Modules;
 
-use Patchwork\Utf8;
-
 class ModuleOnepageNavigation extends \Module
 {
     /**
@@ -36,7 +34,7 @@ class ModuleOnepageNavigation extends \Module
             /** @var BackendTemplate|object $objTemplate */
             $objTemplate = new \BackendTemplate('be_wildcard');
 
-            $objTemplate->wildcard = '### '.Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['onepage_navigation'][0]).' ###';
+            $objTemplate->wildcard = '### '. $GLOBALS['TL_LANG']['FMD']['onepage_navigation'][0] .' ###';
             $objTemplate->title    = $this->headline;
             $objTemplate->id       = $this->id;
             $objTemplate->link     = $this->name;
