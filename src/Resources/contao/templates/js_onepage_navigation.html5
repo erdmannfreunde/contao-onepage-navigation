@@ -1,0 +1,13 @@
+
+<script src="/bundles/eufonepagenavigation/onepage_navigation.js"></script>
+
+<script>
+(function() {
+  let list = document.querySelector('.mod_onepage_navigation');
+
+  new Onepage(list, {
+    'offset': '30', // make navigation active when 30% is visible
+    'pushUrl': true // change url, when scrolling and clicking
+  });
+})();
+</script>

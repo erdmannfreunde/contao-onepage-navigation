@@ -3,10 +3,10 @@
 <?php $this->block('content'); ?>
 
     <?php if($this->hasItems): ?>
-        <ul class="onepage_navigation__list">
+        <ul class="level_1">
             <?php foreach ($this->navigation as $nav): ?>
-                <li<?php if($nav->css): ?> class="<?= $nav->css;?>"<?php endif; ?>>
-                    <a href="<?= $nav->onepage_jump; ?>" data-onepagelink="<?= $nav->navigation_jumpTo ?>" title="<?= $nav->title ?>">
+                <li<?php if($nav->css): ?> class="<?= $nav->css;?>"<?php endif; ?> data-onepage-link="<?= $nav->navigation_jumpTo ?>">
+                    <a href="<?= $nav->onepage_jump; ?>" data-onepage-link="<?= $nav->navigation_jumpTo ?>" title="<?= $nav->title ?>">
                         <?= $nav->title ?>
                     </a>
                 </li>
