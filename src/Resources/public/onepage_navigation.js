@@ -38,9 +38,9 @@ function Onepage(list, options) {
 
     // set nav active when scrolling
     const navActive = (article) => {
-        listItems = list.querySelectorAll('li');
+        let listItems = list.querySelectorAll('li');
         let active = list.querySelector('li.active');
-        actualItem = list.querySelector('li[data-onepage-link="'+ article +'"]') ? list.querySelector('li[data-onepage-link="'+ article +'"]') : null;
+        let actualItem = list.querySelector('li[data-onepage-link="'+ article +'"]') ? list.querySelector('li[data-onepage-link="'+ article +'"]') : null;
 
         if (typeof(active) != 'undefined' && active != null) {
             active.classList.remove('active');
@@ -56,7 +56,7 @@ function Onepage(list, options) {
     };
 
     let getPreviousSibling = function (elem, selector) {
-        var sibling = elem.previousElementSibling;
+        let sibling = elem.previousElementSibling;
 
         // if no previous element exists with this selector, use current element
         if (!sibling) return elem.nextElementSibling;
@@ -73,12 +73,8 @@ function Onepage(list, options) {
 
     const articleObserver = new IntersectionObserver (function (entries, observer) {
         entries.forEach(function(entry) {
-
             if (entry.isIntersecting) {
                 navActive(entry.target.id);
-                //entry.target.classList.add("article--active");
-            } else {
-                //entry.target.classList.remove("article--active");
             }
         });
     }, { rootMargin: offsetArray });
