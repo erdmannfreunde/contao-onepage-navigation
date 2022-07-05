@@ -5,7 +5,7 @@
     <?php if($this->hasItems): ?>
         <ul class="level_1">
             <?php foreach ($this->navigation as $nav): ?>
-                <li<?php if($nav->css): ?> class="<?= $nav->css;?>"<?php endif; ?> data-onepage-link="<?= $nav->navigation_jumpTo ?>">
+                <li<?php if(!empty($nav->css)): ?> class="<?= $nav->css;?>"<?php endif; ?> data-onepage-link="<?= $nav->navigation_jumpTo ?>">
                     <a href="<?= $nav->onepage_jump; ?>" data-onepage-link="<?= $nav->navigation_jumpTo ?>" title="<?= $nav->title ?>">
                         <?= $nav->title ?>
                     </a>
