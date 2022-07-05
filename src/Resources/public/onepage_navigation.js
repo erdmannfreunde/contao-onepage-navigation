@@ -38,17 +38,19 @@ function Onepage(list, options) {
 
     // set nav active when scrolling
     const navActive = (article) => {
-        let listItems = list.querySelectorAll('li');
         let active = list.querySelector('li.active');
         let actualItem = list.querySelector('li[data-onepage-link="'+ article +'"]') ? list.querySelector('li[data-onepage-link="'+ article +'"]') : null;
 
+        // remove existing active status
         if (typeof(active) != 'undefined' && active != null) {
             active.classList.remove('active');
         }
 
         if (actualItem) {
+             // add active status when scrolling down
             actualItem.classList.add('active');
-        } else {
+        } else if(active != null) {
+            // active status to previous list item when scrolling up AND active article is not in nav
             article = getPreviousSibling(document.querySelector('#'+ article), '.onepage_article');
             actualItem = list.querySelector('li[data-onepage-link="'+ article.id +'"]');
             actualItem.classList.add('active');
@@ -60,7 +62,7 @@ function Onepage(list, options) {
 
         // if no previous element exists with this selector, use current element
         if (!sibling) return elem.nextElementSibling;
-        
+
         // if selector does not exist, return previous element
         if (!selector) return sibling;
 
@@ -69,7 +71,6 @@ function Onepage(list, options) {
             sibling = sibling.previousElementSibling;
         }
     };
-
 
     const articleObserver = new IntersectionObserver (function (entries, observer) {
         entries.forEach(function(entry) {
