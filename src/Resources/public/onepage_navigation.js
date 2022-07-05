@@ -4,7 +4,7 @@ function Onepage(list, options) {
     const pushUrl = options.pushUrl || false;
     const offset = parseInt(options.offset, 10) || 0;
 
-    const offsetArray = Number(offset) - 100 + '% 0% '+  Number(-offset) + '% 0%';
+    const offsetArray = Number(-offset) + '% 0% '+  Number(-offset) + '% 0%';
     const el = document.querySelectorAll('a[href*="#"]:not([href="#"]):not([href="#0"])');
     const uri = window.location.href.split("#")[0];
 
@@ -49,7 +49,7 @@ function Onepage(list, options) {
         if (actualItem) {
              // add active status when scrolling down
             actualItem.classList.add('active');
-        } else if(active != null) {
+        } else if (active != null) {
             // active status to previous list item when scrolling up AND active article is not in nav
             article = getPreviousSibling(document.querySelector('#'+ article), '.onepage_article');
             actualItem = list.querySelector('li[data-onepage-link="'+ article.id +'"]');
