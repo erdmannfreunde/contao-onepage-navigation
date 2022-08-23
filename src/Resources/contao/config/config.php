@@ -14,7 +14,7 @@ declare(strict_types=1);
 /*
  * Frontend-Modules
  **/
-array_insert($GLOBALS['FE_MOD']['navigationMenu'], \count($GLOBALS['FE_MOD']['navigationMenu']), [
+Contao\ArrayUtil::arrayInsert($GLOBALS['FE_MOD']['navigationMenu'], \count($GLOBALS['FE_MOD']['navigationMenu']), [
     'onepage_navigation'     => 'EuF\OnepageNavigation\Modules\ModuleOnepageNavigation',
 ]);
 

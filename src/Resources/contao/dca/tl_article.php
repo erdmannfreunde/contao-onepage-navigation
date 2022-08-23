@@ -11,6 +11,8 @@ declare(strict_types=1);
  * @link       http://github.com/erdmannfreunde/contao-onepage-navigation
  */
 
+use Contao\Backend;
+
 /*
  * Palettes
  */
