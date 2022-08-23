@@ -22,7 +22,7 @@
 		"source":"https://github.com/ErdmannFreunde/contao-onepage-navigation"
 	},
 	"require":{
-		"contao/core-bundle": "~4.4"
+		"contao/core-bundle": "~4.4 || ~5.0"
 	},
 	"require-dev": {
 		 "contao/manager-plugin": "^2.0"
