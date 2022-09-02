@@ -12,8 +12,13 @@ declare(strict_types=1);
  */
 
 namespace EuF\OnepageNavigation\Modules;
+use Contao\Module;
+use Contao\System;
+use Contao\PageModel;
+use Contao\ArticleModel;
+use Contao\StringUtil;
 
-class ModuleOnepageNavigation extends \Module
+class ModuleOnepageNavigation extends Module
 {
     /**
      * Template.
@@ -29,7 +34,9 @@ class ModuleOnepageNavigation extends \Module
      */
     public function generate()
     {
-        if (TL_MODE === 'BE')
+        $request = System::getContainer()->get('request_stack')->getCurrentRequest();
+
+        if ($request && System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request))
         {
             /** @var BackendTemplate|object $objTemplate */
             $objTemplate = new \BackendTemplate('be_wildcard');
@@ -60,18 +67,18 @@ class ModuleOnepageNavigation extends \Module
         // override page ID if a rootPage is defined
         if ($this->defineRoot)
         {
-            $PageID    = \PageModel::findById($this->rootPage);
+            $PageID    = PageModel::findById($this->rootPage);
             $PageAlias = $PageID->getFrontendUrl('');
             $intPageID = $PageID->id;
         }
         else
         {
-            $PageID    = \PageModel::findById($intPageID);
+            $PageID    = PageModel::findById($intPageID);
             $PageAlias = $PageID->getFrontendUrl('');
         }
 
         // get articles by page id
-        $objArticle = \ArticleModel::findByPid($intPageID, ['order' => 'sorting']);
+        $objArticle = ArticleModel::findByPid($intPageID, ['order' => 'sorting']);
 
         if (null !== $objArticle)
         {
@@ -86,7 +93,7 @@ class ModuleOnepageNavigation extends \Module
                     }
 
                     // get jumpTo target and add to article so it can be rendered in template
-                    $cssID = \StringUtil::deserialize($objArticle->cssID);
+                    $cssID = StringUtil::deserialize($objArticle->cssID);
 
                     if (empty($cssID[0]))
                     {
