@@ -75,11 +75,6 @@ class OnepageArticle extends Backend {
      */
     public function generateAlias($varValue, DataContainer $dc)
     {
-        $aliasExists = function (string $navigation_jumpTo) use ($dc): bool
-        {
-            return $this->Database->prepare("SELECT id FROM tl_article WHERE navigation_jumpTo=? AND id!=?")->execute($navigation_jumpTo, $dc->id)->numRows > 0;
-        };
-
         // Generate alias if there is none
         if (!$varValue)
         {
@@ -88,10 +83,6 @@ class OnepageArticle extends Backend {
         elseif (preg_match('/^[1-9]\d*$/', $varValue))
         {
             throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasNumeric'], $varValue));
-        }
-        elseif ($aliasExists($varValue))
-        {
-            throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasExists'], $varValue));
         }
 
         return $varValue;
