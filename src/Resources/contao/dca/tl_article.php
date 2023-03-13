@@ -12,6 +12,9 @@ declare(strict_types=1);
  */
 
 use Contao\Backend;
+use Contao\DataContainer;
+use Contao\System;
+use Contao\ArticleModel;
 
 /*
  * Palettes
@@ -78,7 +81,7 @@ class OnepageArticle extends Backend {
         // Generate alias if there is none
         if (!$varValue)
         {
-            $varValue = System::getContainer()->get('contao.slug')->generate($dc->activeRecord->navigation_title, ArticleModel::findByPk($dc->activeRecord->pid)->jumpTo, $aliasExists);
+            $varValue = System::getContainer()->get('contao.slug')->generate($dc->activeRecord->navigation_title);
         }
         elseif (preg_match('/^[1-9]\d*$/', $varValue))
         {
