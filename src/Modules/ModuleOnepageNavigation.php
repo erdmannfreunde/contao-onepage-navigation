@@ -12,6 +12,7 @@ declare(strict_types=1);
  */
 
 namespace EuF\OnepageNavigation\Modules;
+use Contao\BackendTemplate;
 use Contao\Module;
 use Contao\System;
 use Contao\PageModel;
@@ -39,7 +40,7 @@ class ModuleOnepageNavigation extends Module
         if ($request && System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request))
         {
             /** @var BackendTemplate|object $objTemplate */
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
 
             $objTemplate->wildcard = '### '. $GLOBALS['TL_LANG']['FMD']['onepage_navigation'][0] .' ###';
             $objTemplate->title    = $this->headline;
