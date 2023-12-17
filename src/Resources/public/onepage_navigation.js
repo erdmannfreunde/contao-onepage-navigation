@@ -1,6 +1,6 @@
 function Onepage(list, options) {
     options = options || {};
-    const articles = options.articles || document.querySelectorAll('.mod_article');
+    const articles = options.articles || document.querySelectorAll('.onepage_article');
     const pushUrl = options.pushUrl || false;
     const offset = parseInt(options.offset, 10) || 0;
 
