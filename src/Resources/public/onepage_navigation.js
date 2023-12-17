@@ -1,6 +1,6 @@
 function Onepage(list, options) {
     options = options || {};
-    const articles = options.articles || document.querySelectorAll('.mod_article');
+    const articles = options.articles || document.querySelectorAll('.onepage_article');
     const pushUrl = options.pushUrl || false;
     const offset = parseInt(options.offset, 10) || 0;
 
@@ -15,7 +15,8 @@ function Onepage(list, options) {
 
                 // figure out element to scroll to
                 let target = anchor.hash;
-                let article = document.getElementById(anchor.hash.slice(1)).offsetTop;
+                let article = document.getElementById(anchor.hash.slice(1));
+                let position = article.offsetTop - parseInt(getComputedStyle(article).scrollMarginTop);
 
                 if (target.length) {
                     // only prevent default if animation is actually gonna happen
@@ -23,7 +24,7 @@ function Onepage(list, options) {
 
                     // scroll to selected article
                     scrollTo({
-                        top: article,
+                        top: position,
                         behavior: "smooth"
                     });
 
