@@ -3,7 +3,7 @@
 
 <script>
 (function() {
-  let list = document.querySelector('.mod_onepage_navigation');
+  let list = document.querySelector('.module-onepage-navigation');
 
   new Onepage(list, {
     'offset': '30', // make navigation active when 30% is visible

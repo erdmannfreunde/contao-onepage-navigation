@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    autoconfigure: true
+    autowire: true
+
+  EuF\OnepageNavigation\EventListener\InsertTagsListener: ~
+  EuF\OnepageNavigation\EventListener\GetArticleListener: ~
+  EuF\OnepageNavigation\Controller\FrontendModule\OnepageNavigationController: ~
+  EuF\OnepageNavigation\EventListener\DataContainer\GenerateAliasSaveCallback: ~
