@@ -25,7 +25,7 @@ use Symfony\Component\HttpFoundation\Response;
 #[AsFrontendModule(category: 'navigationMenu')]
 class OnepageNavigationController extends AbstractFrontendModuleController
 {
-    public const string TYPE = 'onepage_navigation';
+    public const TYPE = 'onepage_navigation';
 
     public function __construct(
         private readonly ContentUrlGenerator $contentUrlGenerator,
