@@ -1,0 +1,15 @@
+{% extends '@Contao/frontend_module/_base.html.twig' %}
+
+{% set searchable = false %}
+
+{% block content %}
+    {% if hasItems %}
+        <ul class="level_1">
+            {% for item in navigation %}
+                <li{% if item.css is defined %} class="{{ item.css }}"{% endif %} data-onepage-link="{{ item.navigation_jumpTo }}">
+                    <a href="{{ item.onepage_jump }}" data-onepage-link="{{ item.navigation_jumpTo }}" title="{{ item.title }}">{{ item.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

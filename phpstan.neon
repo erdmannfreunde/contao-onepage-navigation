@@ -1,0 +1,19 @@
+parameters:
+    level: 6
+
+    featureToggles:
+        alwaysTrueAlwaysReported: false
+        detectDeadTypeInMultiCatch: false
+        disableCheckMissingIterableValueType: false
+
+    universalObjectCratesClasses:
+        - Contao\Model
+        - Contao\ArticleModel
+        - Contao\DataContainer
+        - Contao\Model\Collection
+
+    ignoreErrors:
+        - identifier: missingType.iterableValue
+
+    treatPhpDocTypesAsCertain: false
+    rememberPossiblyImpureFunctionValues: false

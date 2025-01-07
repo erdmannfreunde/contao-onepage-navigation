@@ -12,8 +12,13 @@
 		},
 		{
 			"name":"Erdmann & Freunde // Sebastian Buck",
-			"homepage":"http://erdmann-freunde.de",
+			"homepage":"https://erdmann-freunde.de",
 			"role":"Developer"
+		},
+		{
+			"name": "Kehr Solutions",
+			"homepage": "https://www.kehr-solutions.de",
+			"role": "Developer"
 		}
 	],
 	"support":{
@@ -22,10 +27,13 @@
 		"source":"https://github.com/ErdmannFreunde/contao-onepage-navigation"
 	},
 	"require":{
-		"contao/core-bundle": "~4.9 || ~5.0"
+		"php": "^8.2",
+		"contao/core-bundle": "^5.3"
 	},
 	"require-dev": {
-		 "contao/manager-plugin": "^2.0"
+		 "contao/manager-plugin": "^2.0",
+		"friendsofphp/php-cs-fixer": "^3.64",
+		"phpstan/phpstan": "^1.12"
 	},
 	"replace":{
 		"sascha-brandhoff/onepage-navigation":"self.version"
@@ -37,5 +45,12 @@
 	},
 	"extra": {
 		"contao-manager-plugin": "EuF\\OnepageNavigation\\ContaoManager\\ContaoManagerPlugin"
+	},
+	"config": {
+		"allow-plugins": {
+			"contao-components/installer": true,
+			"php-http/discovery": true,
+			"contao/manager-plugin": true
+		}
 	}
 }
