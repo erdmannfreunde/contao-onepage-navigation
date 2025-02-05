@@ -60,7 +60,11 @@ class OnepageNavigationController extends AbstractFrontendModuleController
 
         if (null !== $objArticle) {
             while ($objArticle->next()) {
-                if ($objArticle->addNavigation && $objArticle->published) {
+                if ($objArticle->addNavigation
+                    && $objArticle->published
+                    && $objArticle->start <= time()
+                    && ('' == $objArticle->stop || $objArticle->stop > time())
+                ) {
                     if ($objArticle->navigation_title) {
                         $objArticle->title = $objArticle->navigation_title;
                     }
