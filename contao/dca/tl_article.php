@@ -54,6 +54,7 @@ $GLOBALS['TL_DCA']['tl_article']['fields']['navigation_title'] = [
     ],
     'sql' => [
         'type' => 'string',
+        'length' => 255,
         'default' => '',
     ],
 ];
@@ -69,6 +70,7 @@ $GLOBALS['TL_DCA']['tl_article']['fields']['navigation_jumpTo'] = [
     ],
     'sql' => [
         'type' => 'string',
+        'length' => 255,
         'default' => '',
     ],
 ];
