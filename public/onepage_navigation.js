@@ -5,7 +5,7 @@ function Onepage(list, options) {
     const offset = parseInt(options.offset, 10) || 0;
 
     const offsetArray = Number(-offset) + '% 0% '+  Number(-offset) + '% 0%';
-    const el = document.querySelectorAll('a[href*="#"]:not([href="#"]):not([href="#0"])');
+    const el = document.querySelectorAll('a[href*="#"]:not([href="#"]):not([href="#0"]):not(.invisible)');
     const uri = window.location.href.split("#")[0];
 
     el.forEach ((anchor) => {
