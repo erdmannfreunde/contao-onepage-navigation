@@ -29,7 +29,11 @@ readonly class InsertTagsListener
     {
         $parts = StringUtil::trimsplit('::', $insertTag);
 
-        if (!str_starts_with($parts[0], 'scroll') && 3 !== count($parts)) {
+        if (!str_starts_with($parts[0], 'scroll')) {
+            return false;
+        }
+
+        if (3 !== count($parts)) {
             return false;
         }
 
@@ -49,3 +53,4 @@ readonly class InsertTagsListener
         );
     }
 }
+
