@@ -12,6 +12,7 @@
 namespace EuF\OnepageNavigation\Controller\FrontendModule;
 
 use Contao\ArticleModel;
+use Contao\Controller;
 use Contao\CoreBundle\Controller\FrontendModule\AbstractFrontendModuleController;
 use Contao\CoreBundle\DependencyInjection\Attribute\AsFrontendModule;
 use Contao\CoreBundle\Routing\ContentUrlGenerator;
@@ -63,7 +64,9 @@ class OnepageNavigationController extends AbstractFrontendModuleController
                 if ($objArticle->addNavigation
                     && $objArticle->published
                     && $objArticle->start <= time()
-                    && ('' == $objArticle->stop || $objArticle->stop > time())
+                    && ('' == $objArticle->stop
+                        || $objArticle->stop > time())
+                    && Controller::isVisibleElement($objArticle->current())
                 ) {
                     if ($objArticle->navigation_title) {
                         $objArticle->title = $objArticle->navigation_title;
