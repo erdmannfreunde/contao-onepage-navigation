@@ -4,7 +4,6 @@ function Onepage(list, options) {
     const pushUrl = options.pushUrl || false;
     const offset = parseInt(options.offset, 10) || 0;
 
-    const offsetArray = Number(-offset) + '% 0% '+  Number(-offset) + '% 0%';
     const el = document.querySelectorAll('a[href*="#"]:not([href="#"]):not([href="#0"]):not(.invisible)');
     const uri = window.location.href.split("#")[0];
 
@@ -73,15 +72,64 @@ function Onepage(list, options) {
         }
     };
 
-    const articleObserver = new IntersectionObserver (function (entries, observer) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                navActive(entry.target.id);
+    const getActiveArticleByPosition = () => {
+        if (!articles.length) {
+            return null;
+        }
+
+        const activationPoint = (window.innerHeight * offset) / 100;
+        let candidate = null;
+
+        articles.forEach((article) => {
+            const rect = article.getBoundingClientRect();
+
+            if (rect.top <= activationPoint) {
+                if (candidate === null || rect.top > candidate.rectTop) {
+                    candidate = {
+                        id: article.id,
+                        rectTop: rect.top
+                    };
+                }
             }
         });
-    }, { rootMargin: offsetArray });
 
-    articles.forEach ((article) => {
-        articleObserver.observe(article);
-    });
+        return candidate ? candidate.id : articles[0].id;
+    };
+
+    const updateActiveArticle = () => {
+        const activeArticle = getActiveArticleByPosition();
+
+        if (activeArticle) {
+            navActive(activeArticle);
+        }
+    };
+
+    let ticking = false;
+    const requestActiveUpdate = () => {
+        if (ticking) {
+            return;
+        }
+
+        ticking = true;
+        window.requestAnimationFrame(() => {
+            updateActiveArticle();
+            ticking = false;
+        });
+    };
+
+    window.addEventListener('scroll', requestActiveUpdate, { passive: true });
+    window.addEventListener('resize', requestActiveUpdate);
+
+    if (typeof ResizeObserver !== 'undefined') {
+        const resizeObserver = new ResizeObserver(() => {
+            requestActiveUpdate();
+        });
+
+        articles.forEach((article) => {
+            resizeObserver.observe(article);
+        });
+    }
+
+    // initial state
+    requestActiveUpdate();
 };
