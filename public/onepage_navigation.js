@@ -4,7 +4,6 @@ function Onepage(list, options) {
     const pushUrl = options.pushUrl || false;
     const offset = parseInt(options.offset, 10) || 0;
 
-    const offsetArray = Number(-offset) + '% 0% '+  Number(-offset) + '% 0%';
     const el = document.querySelectorAll('a[href*="#"]:not([href="#"]):not([href="#0"]):not(.invisible)');
     const uri = window.location.href.split("#")[0];
 
@@ -118,26 +117,9 @@ function Onepage(list, options) {
         });
     };
 
-    const articleObserver = new IntersectionObserver (function () {
-        requestActiveUpdate();
-    }, { rootMargin: offsetArray });
-
-    articles.forEach((article) => {
-        articleObserver.observe(article);
-    });
-
-    if (typeof ResizeObserver !== 'undefined') {
-        const resizeObserver = new ResizeObserver(() => {
-            requestActiveUpdate();
-        });
-
-        articles.forEach((article) => {
-            resizeObserver.observe(article);
-        });
-    }
-
     window.addEventListener('scroll', requestActiveUpdate, { passive: true });
     window.addEventListener('resize', requestActiveUpdate);
+    document.addEventListener('toggle', requestActiveUpdate, true);
 
     // initial state
     requestActiveUpdate();
