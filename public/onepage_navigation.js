@@ -119,7 +119,16 @@ function Onepage(list, options) {
 
     window.addEventListener('scroll', requestActiveUpdate, { passive: true });
     window.addEventListener('resize', requestActiveUpdate);
-    document.addEventListener('toggle', requestActiveUpdate, true);
+
+    if (typeof ResizeObserver !== 'undefined') {
+        const resizeObserver = new ResizeObserver(() => {
+            requestActiveUpdate();
+        });
+
+        articles.forEach((article) => {
+            resizeObserver.observe(article);
+        });
+    }
 
     // initial state
     requestActiveUpdate();
