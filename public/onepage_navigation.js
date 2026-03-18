@@ -73,15 +73,72 @@ function Onepage(list, options) {
         }
     };
 
-    const articleObserver = new IntersectionObserver (function (entries, observer) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                navActive(entry.target.id);
+    const getActiveArticleByPosition = () => {
+        if (!articles.length) {
+            return null;
+        }
+
+        const activationPoint = (window.innerHeight * offset) / 100;
+        let candidate = null;
+
+        articles.forEach((article) => {
+            const rect = article.getBoundingClientRect();
+
+            if (rect.top <= activationPoint) {
+                if (candidate === null || rect.top > candidate.rectTop) {
+                    candidate = {
+                        id: article.id,
+                        rectTop: rect.top
+                    };
+                }
             }
         });
+
+        return candidate ? candidate.id : articles[0].id;
+    };
+
+    const updateActiveArticle = () => {
+        const activeArticle = getActiveArticleByPosition();
+
+        if (activeArticle) {
+            navActive(activeArticle);
+        }
+    };
+
+    let ticking = false;
+    const requestActiveUpdate = () => {
+        if (ticking) {
+            return;
+        }
+
+        ticking = true;
+        window.requestAnimationFrame(() => {
+            updateActiveArticle();
+            ticking = false;
+        });
+    };
+
+    const articleObserver = new IntersectionObserver (function () {
+        requestActiveUpdate();
     }, { rootMargin: offsetArray });
 
-    articles.forEach ((article) => {
+    articles.forEach((article) => {
         articleObserver.observe(article);
     });
+
+    if (typeof ResizeObserver !== 'undefined') {
+        const resizeObserver = new ResizeObserver(() => {
+            requestActiveUpdate();
+        });
+
+        articles.forEach((article) => {
+            resizeObserver.observe(article);
+        });
+    }
+
+    window.addEventListener('scroll', requestActiveUpdate, { passive: true });
+    window.addEventListener('resize', requestActiveUpdate);
+
+    // initial state
+    requestActiveUpdate();
 };
