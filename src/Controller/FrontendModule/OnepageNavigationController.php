@@ -73,13 +73,13 @@ class OnepageNavigationController extends AbstractFrontendModuleController
                     }
 
                     // get jumpTo target and add to article so it can be rendered in template
-                    $cssID = StringUtil::deserialize($objArticle->cssID);
+                    $cssID = StringUtil::deserialize($objArticle->cssID, true);
 
                     if (empty($cssID[0])) {
                         if ($objArticle->navigation_jumpTo) {
-                            $cssID = [$objArticle->navigation_jumpTo, $cssID[1]];
+                            $cssID = [$objArticle->navigation_jumpTo, $cssID[1] ?? ''];
                         } else {
-                            $cssID = ['article-'.$objArticle->id, $cssID[1]];
+                            $cssID = ['article-'.$objArticle->id, $cssID[1] ?? ''];
                             $objArticle->navigation_jumpTo = 'article-'.$objArticle->id;
                         }
                     }
