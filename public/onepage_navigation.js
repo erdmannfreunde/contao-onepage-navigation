@@ -52,8 +52,11 @@ function Onepage(list, options) {
         } else if (active != null) {
             // active status to previous list item when scrolling up AND active article is not in nav
             article = getPreviousSibling(document.querySelector('#'+ article), '.onepage_article');
-            actualItem = list.querySelector('li[data-onepage-link="'+ article.id +'"]');
-            actualItem.classList.add('active');
+            actualItem = article ? list.querySelector('li[data-onepage-link="'+ article.id +'"]') : null;
+
+            if (actualItem) {
+                actualItem.classList.add('active');
+            }
         }
     };
 
