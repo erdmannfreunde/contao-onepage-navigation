@@ -48,12 +48,7 @@ class OnepageNavigationController extends AbstractFrontendModuleController
             $pageId = $objPage->id;
         } else {
             $objPage = $this->getPageModel();
-
-            if ('error_404' === $objPage->type) {
-                $pageAlias = $objPage->alias;
-            } else {
-                $pageAlias = $this->contentUrlGenerator->generate($objPage);
-            }
+            $pageAlias = $request->getRequestUri();
         }
 
         // get articles by page id
