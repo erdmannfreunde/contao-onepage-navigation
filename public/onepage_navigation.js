@@ -15,16 +15,15 @@ function Onepage(list, options) {
                 // figure out element to scroll to
                 let target = anchor.hash;
                 let article = document.getElementById(anchor.hash.slice(1));
-                let position = article.offsetTop - parseInt(getComputedStyle(article).scrollMarginTop);
 
-                if (target.length) {
+                if (target.length && article) {
                     // only prevent default if animation is actually gonna happen
                     event.preventDefault();
 
-                    // scroll to selected article
-                    scrollTo({
-                        top: position,
-                        behavior: "smooth"
+                    // scroll to selected article, scroll-margin-top is honoured natively
+                    article.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
                     });
 
                     // change url
