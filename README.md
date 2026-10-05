@@ -18,3 +18,11 @@ This extension for Contao Open Source CMS allows you to create a article navigat
   * [article-id] = article id this link should scroll to
   * [myCustomLinkTitle] = text to be displayed as the link
   * Example: `{{scroll::contact::Email us}}`
+
+### Accessibility
+
+* The module renders a "Skip navigation" link before the list, just like the core navigation module. It is visually hidden until it receives keyboard focus, so your theme should style `a.invisible:focus-visible`.
+* Use the field *ARIA label* to name the navigation landmark (e.g. "Main navigation"), especially if the page contains more than one `<nav>`.
+* After a jump, the target article receives the focus (`tabindex="-1"` is added if necessary), so keyboard and screen reader users continue reading there.
+* The active item gets `aria-current="location"` in addition to the `active` class.
+* Smooth scrolling is disabled when the visitor prefers reduced motion.

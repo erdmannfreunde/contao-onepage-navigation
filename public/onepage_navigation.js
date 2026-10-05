@@ -6,6 +6,7 @@ function Onepage(list, options) {
 
     const el = document.querySelectorAll('a[href*="#"]:not([href="#"]):not([href="#0"]):not(.invisible)');
     const uri = window.location.href.split("#")[0];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     el.forEach ((anchor) => {
         anchor.addEventListener('click', (event) => {
@@ -20,11 +21,18 @@ function Onepage(list, options) {
                     // only prevent default if animation is actually gonna happen
                     event.preventDefault();
 
-                    // scroll to selected article, scroll-margin-top is honoured natively
+                    // scroll to selected article, scroll-margin-top and scroll-padding-top are honoured natively
                     article.scrollIntoView({
-                        behavior: "smooth",
+                        behavior: reduceMotion.matches ? "auto" : "smooth",
                         block: "start"
                     });
+
+                    // move the focus along, so keyboard and screen reader users continue at the target
+                    if (!article.hasAttribute('tabindex')) {
+                        article.setAttribute('tabindex', '-1');
+                    }
+
+                    article.focus({ preventScroll: true });
 
                     // change url
                     if (pushUrl) {
@@ -57,6 +65,15 @@ function Onepage(list, options) {
                 actualItem.classList.add('active');
             }
         }
+
+        // expose the active item to screen readers as well
+        list.querySelectorAll('li[data-onepage-link] > a').forEach((link) => {
+            if (link.parentElement.classList.contains('active')) {
+                link.setAttribute('aria-current', 'location');
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        });
     };
 
     let getPreviousSibling = function (elem, selector) {

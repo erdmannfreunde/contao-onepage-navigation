@@ -2,15 +2,20 @@
 
 {% block wrapper_tag %}nav{% endblock %}
 {% set searchable = false %}
+{% set attributes = attrs().setIfExists('aria-label', data.ariaLabel|default|insert_tag) %}
 
 {% block content %}
     {% if hasItems %}
+        <a href="{{ request }}#{{ skipId }}" class="invisible">{{ 'MSC.skipNavigation'|trans({}, 'contao_default') }}</a>
+
         <ul class="level_1">
             {% for item in navigation %}
                 <li{% if item.css is defined %} class="{{ item.css }}"{% endif %} data-onepage-link="{{ item.navigation_jumpTo }}">
-                    <a href="{{ item.onepage_jump }}" data-onepage-link="{{ item.navigation_jumpTo }}" title="{{ item.title }}">{{ item.title }}</a>
+                    <a href="{{ item.onepage_jump }}" data-onepage-link="{{ item.navigation_jumpTo }}">{{ item.title }}</a>
                 </li>
             {% endfor %}
         </ul>
+
+        <span id="{{ skipId }}" class="invisible"></span>
     {% endif %}
 {% endblock %}

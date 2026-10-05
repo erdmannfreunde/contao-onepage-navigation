@@ -97,6 +97,10 @@ class OnepageNavigationController extends AbstractFrontendModuleController
         $template->set('hasItems', !empty($arrNavigation));
         $template->set('navigation', $arrNavigation);
 
+        // skip link like in the core navigation module
+        $template->set('skipId', 'skipNavigation'.$model->id);
+        $template->set('request', $request->getRequestUri());
+
         return $template->getResponse();
     }
 }

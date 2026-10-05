@@ -16,4 +16,4 @@ use EuF\OnepageNavigation\Controller\FrontendModule\OnepageNavigationController;
 /*
  * Palettes
  */
-$GLOBALS['TL_DCA']['tl_module']['palettes'][OnepageNavigationController::TYPE] = '{title_legend},name,headline,type;{reference_legend:hide},defineRoot;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;';
+$GLOBALS['TL_DCA']['tl_module']['palettes'][OnepageNavigationController::TYPE] = '{title_legend},name,headline,type;{label_legend},ariaLabel;{reference_legend:hide},defineRoot;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;';
