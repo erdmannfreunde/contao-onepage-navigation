@@ -1,5 +1,5 @@
 <script src="/bundles/eufonepagenavigation/jquery.waypoints.js"></script>
-<script>
+<script<?= $this->attrs()->setIfExists('nonce', $this->nonce('script-src')) ?>>
 $(document).ready(function() {
   var el = $('a[href*="#"]').not('[href="#"]').not('[href="#0"]');
   var scrollSpeed = 800;

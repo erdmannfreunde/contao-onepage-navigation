@@ -1,7 +1,7 @@
 
 <script src="/bundles/eufonepagenavigation/onepage_navigation.js"></script>
 
-<script>
+<script<?= $this->attrs()->setIfExists('nonce', $this->nonce('script-src')) ?>>
 (function() {
   let list = document.querySelector('.module-onepage-navigation');
 
