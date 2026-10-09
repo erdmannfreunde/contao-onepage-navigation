@@ -45,11 +45,11 @@ readonly class InsertTagsListener
 
         return sprintf(
             '<a href="%s#%s" data-scroll="%s" title="%s">%s</a>',
-            $request->getUri(),
-            $parts[1],
-            $parts[1],
-            $parts[2],
-            $parts[2]
+            StringUtil::specialcharsAttribute($request->getUri()),
+            StringUtil::specialcharsAttribute($parts[1]),
+            StringUtil::specialcharsAttribute($parts[1]),
+            StringUtil::specialcharsAttribute($parts[2]),
+            StringUtil::specialchars($parts[2])
         );
     }
 }
